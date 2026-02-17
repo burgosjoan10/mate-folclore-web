@@ -1,0 +1,129 @@
+
+/* 1. RESET UNIVERSAL */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Esto es CLAVE: evita que los bordes agranden las cajas */
+    }
+
+    ul {
+        list-style: none; /* Chau puntitos de la lista */
+    }
+
+    a {
+        text-decoration: none; /* Chau subrayado de los links */
+        color: inherit; /* Que herede el color del padre */
+    }
+
+/* 2. VARIABLES GLOBALES (TU PALETA) */
+    :root {
+        /* -- Colores de la Marca (MATE Y FOLCLORE) -- */
+        --color-primario: #8B4513;   /* Marrón SaddleBrown */
+        --color-secundario: #D2691E; /* Chocolate */
+        --color-acento: #FFD700;     /* Dorado (para detalles) */
+    
+        /* -- Colores Base -- */
+        --color-fondo: #FAFAFA;      /* Casi blanco */
+        --color-texto: #333333;      /* Gris oscuro (lee mejor que negro puro) */
+        --color-blanco: #FFFFFF;
+
+        /* -- Tipografía y Tamaños -- */
+        --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        --ancho-maximo: 1200px;      /* Para que no se estire en monitores gigantes */
+        --radio-borde: 8px;          /* Bordes redondeados */
+    }
+
+/* 3. CUERPO GENERAL */
+    body {
+        font-family: var(--fuente-principal);
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+        line-height: 1.6;
+    }
+
+/* 4. ENCABEZADO (HEADER) */
+    header {
+        background-color: var(--color-primario);
+        padding: 1rem 0; /* 1rem es aprox 16px */
+        position: sticky; /* Opcional: Para que el menú te siga al bajar */
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav {
+        display: flex; /* FLEXBOX: La herramienta mágica para alinear */
+        justify-content: space-between; /* Separa Logo <--> Menú */
+        align-items: center;
+        max-width: var(--ancho-maximo);
+        margin: 0 auto; /* Centrar el bloque en la pantalla */
+        padding: 0 20px;
+    }
+
+    nav h1 {
+        color: var(--color-blanco);
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 20px; /* Espacio entre los links */
+    }
+
+    nav a {
+        color: var(--color-blanco);
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--color-acento); /* Efecto al pasar el mouse */
+    }
+
+/* 5. SECCIÓN HERO */
+    #hero {
+        height: 80vh; /* 80% del alto de la pantalla */
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('img/fondo.jpg'); 
+        /* Nota: Si no tenés foto 'fondo.jpg' en la carpeta img, se verá negro/marrón */
+        background-color: var(--color-primario); /* Fallback por si no carga la foto */
+        background-size: cover;
+        background-position: center;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--color-blanco);
+        padding: 0 20px;
+    }
+
+    #hero h2 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    #hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        max-width: 600px;
+    }
+
+    /* 6. BOTONES */
+    button {
+        background-color: var(--color-secundario);
+        color: var(--color-blanco);
+        border: none;
+        padding: 12px 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: var(--radio-borde);
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: var(--color-acento);
+        color: var(--color-primario);
+        transform: scale(1.05); /* Efecto "Pop" */
+    }
