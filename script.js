@@ -12,7 +12,7 @@ const config = {
     productos: [
         {
             id: 1,
-            titulo: "Mate Imperial 'Maravilla' Martinez",
+            titulo: "Mate 'Maravilla' Martinez",
             precio: 20000,
             foto: "img/mateMaravilla.jpeg", // Asegurate que la foto exista
             descripcion: "Virola de alpaca y cuero crudo."

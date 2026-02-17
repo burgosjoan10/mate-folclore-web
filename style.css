@@ -109,7 +109,7 @@
         max-width: 600px;
     }
 
-    /* 6. BOTONES */
+/* 6. BOTONES */
     .boton-compra {
         background-color: var(--color-secundario);
         color: var(--color-blanco);
@@ -128,7 +128,7 @@
         transform: scale(1.05); /* Efecto "Pop" */
     }
 
-     /* 7. SECCIÓN PRODUCTOS */
+/* 7. SECCIÓN PRODUCTOS */
     #productos {
         padding: 4rem 2rem; /* Espacio arriba y a los costados */
         text-align: center;
@@ -195,4 +195,67 @@
     .boton-compra {
         width: 100%; /* Botón ancho completo */
         margin-top: auto; /* Empuja el botón al fondo de la tarjeta */
+    }
+
+/* =========================================
+DISEÑO RESPONSIVE (PARA CELULARES)
+========================================= */
+    @media (max-width: 768px) {
+        
+/* 1. ACOMODAR EL MENÚ (NAV) */
+        nav {
+            flex-direction: column; /* Pone el Logo arriba y los links abajo */
+            gap: 15px; /* Espacio entre logo y links */
+        }
+
+        nav ul {
+            flex-direction: column; /* Pone los links uno abajo del otro */
+            gap: 10px; /* Espacio entre cada link */
+            width: 100%; /* Que ocupen todo el ancho */
+            text-align: center;
+        }
+
+        nav a {
+            display: block; /* Para que el área de clic sea todo el ancho */
+            padding: 10px;
+            background-color: rgba(255,255,255,0.1); /* Un fondito suave para separar */
+            border-radius: var(--radio-borde);
+        }
+
+/* 2. ACHICAR TEXTOS GIGANTES */
+        #hero h2 {
+            font-size: 2rem; /* Bajamos de 3rem a 2rem */
+        }
+
+        #hero p {
+            font-size: 1rem;
+        }
+
+/* 3. AJUSTAR MÁRGENES */
+        #productos {
+            padding: 2rem 1rem; /* Menos relleno a los costados para ganar espacio */
+        }
+
+        #productos h2 {
+            font-size: 2rem;
+        }
+    }
+
+    /* BOTÓN FLOTANTE */
+    .btn-wsp {
+        position: fixed; /* Se queda pegado a la pantalla */
+        bottom: 20px;
+        right: 20px;
+        background-color: #25D366; /* Verde WhatsApp */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 1000; /* Para que flote arriba de todo */
+        transition: transform 0.3s;
+    }
+
+    .btn-wsp:hover {
+        transform: scale(1.1);
     }
