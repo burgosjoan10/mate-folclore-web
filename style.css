@@ -199,8 +199,63 @@
 DISEÑO RESPONSIVE (PARA CELULARES)
 ========================================= */
     @media (max-width: 768px) {
+
+        /* PROBAR DSP EL FONDO EL HERO
+        #hero {
+        /* Sobrescribimos el background image solo con color
+        background: var(--color-primario); 
+         O un degradado si te gusta más: 
+         background: linear-gradient(to bottom, var(--color-primario), var(--color-secundario)); 
+        height: auto;  Dejamos que la altura se ajuste al texto 
+        padding: 100px 20px; Un buen relleno arriba y abajo */
+
+/* 1. MOSTRAR EL BOTÓN HAMBURGUESA */
+        .menu-toggle {
+            display: block !important; /* ¡Aparecé sí o sí! */
+            position: absolute; /* Lo soltamos para ubicarlo a la derecha */
+            right: 20px;
+            top: 20px; /* Ajustá esto según la altura de tu header */
+        }
+
+/* 2. OCULTAR EL MENÚ NORMALMENTE */
+        .nav-menu {
+            position: fixed; /* Lo sacamos del flujo normal */
+            left: -100%; /* Lo escondemos afuera de la pantalla a la izquierda */
+            top: 70px; /* Lo bajamos para que no tape el header (ajustá este valor si hace falta) */
+            flex-direction: column;
+            background-color: var(--color-primario); /* Fondo del menú desplegable */
+            width: 100%; /* Que ocupe todo el ancho */
+            text-align: center;
+            transition: 0.3s; /* Animación suave al entrar/salir */
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            padding: 20px 0; /* Un poco de aire arriba y abajo */
+        }
+
+/* 3. CLASE MÁGICA PARA MOSTRAR EL MENÚ */
+    /* Cuando JS agregue esta clase, el menú entra desde la izquierda */
+        .nav-menu.active {
+            left: 0; 
+        }
+
+        /* Esto hace que los links se vean más grandes y separados en el menú desplegable */
+        .nav-menu li {
+            margin: 15px 0;
+        }
+
+/* 4. ANIMACIÓN DEL BOTÓN (Opcional: se transforma en una X) */
+        .menu-toggle.is-active .bar:nth-child(2) {
+            opacity: 0; /* Desaparece la del medio */
+        }
+
+        .menu-toggle.is-active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg); /* Gira la de arriba */
+        }
+
+        .menu-toggle.is-active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg); /* Gira la de abajo */
+        }
         
-/* 1. ACOMODAR EL MENÚ (NAV) */
+/* 5. ACOMODAR EL MENÚ (NAV) */
         nav {
             flex-direction: column; /* Pone el Logo arriba y los links abajo */
             gap: 15px; /* Espacio entre logo y links */
@@ -220,7 +275,7 @@ DISEÑO RESPONSIVE (PARA CELULARES)
             border-radius: var(--radio-borde);
         }
 
-/* 2. ACHICAR TEXTOS GIGANTES */
+/* 6. ACHICAR TEXTOS GIGANTES */
         #hero h2 {
             font-size: 2rem; /* Bajamos de 3rem a 2rem */
         }
@@ -229,7 +284,7 @@ DISEÑO RESPONSIVE (PARA CELULARES)
             font-size: 1rem;
         }
 
-/* 3. AJUSTAR MÁRGENES */
+/* 7. AJUSTAR MÁRGENES */
         #productos {
             padding: 2rem 1rem; /* Menos relleno a los costados para ganar espacio */
         }
@@ -283,4 +338,25 @@ DISEÑO RESPONSIVE (PARA CELULARES)
     .redes-sociales a:hover {
         color: var(--color-acento); /* Se pone dorado al pasar el mouse */
         transform: translateY(-5px); /* Saltito */
+    }
+
+/* --- ESTILOS DEL MENÚ HAMBURGUESA --- */
+
+    /* Ocultamos el botón en PC por defecto */
+    .menu-toggle {
+        display: none;
+        width: 40px; /* Le damos un tamaño físico */
+        height: 40px;
+        cursor: pointer;
+        /* border: 1px solid red;  <-- Descomentá esto si segís sin verlo para ver la caja */
+    }
+
+    /* Dibujamos las 3 rayitas */
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: white !important; /* El !important fuerza que sea blanco */
+        border-radius: 2px;
     }

@@ -76,4 +76,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Inyectamos la tarjeta en el contenedor
         contenedor.innerHTML += tarjetaHTML;
     });
+
+    /* --- PEGAR ESTO ADENTRO DEL addEventListener('DOMContentLoaded', ...) --- */
+
+// 1. Buscamos el botón y el menú en el HTML
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // 2. Chequeamos si existen (Esto es para evitar errores)
+    if (menuToggle && navMenu) {
+        console.log("✅ Botón Hamburguesa Encontrado");
+
+        // 3. Escuchamos el Clic
+        menuToggle.addEventListener('click', () => {
+            console.log("🖱️ Hiciste Clic en el menú!");
+            
+            // Agregamos/Quitamos la clase 'active' al menú
+            navMenu.classList.toggle('active');
+            
+            // (Opcional) Animación del ícono
+            menuToggle.classList.toggle('is-active');
+        });
+    } else {
+        console.log("❌ ERROR: No encuentro el botón con id 'mobile-menu'");
+    }
 });
