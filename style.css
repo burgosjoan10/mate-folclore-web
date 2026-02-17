@@ -82,29 +82,27 @@
 
 /* 5. SECCIÓN HERO */
     #hero {
-        height: 80vh; /* 80% del alto de la pantalla */
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('img/fondo.jpg'); 
-        /* Nota: Si no tenés foto 'fondo.jpg' en la carpeta img, se verá negro/marrón */
-        background-color: var(--color-primario); /* Fallback por si no carga la foto */
-        background-size: cover;
-        background-position: center;
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: var(--color-blanco);
-        padding: 0 20px;
-    }
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;      /* Clave para que no se deforme */
+    background-position: center; /* Centra el diseño */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* El efecto que querías */
+}
 
     #hero h2 {
         font-size: 3rem;
+        color: var(--color-blanco);
         margin-bottom: 10px;
     }
 
     #hero p {
         font-size: 1.2rem;
+        color: var(--color-blanco);
         margin-bottom: 20px;
         max-width: 600px;
     }
@@ -258,4 +256,31 @@ DISEÑO RESPONSIVE (PARA CELULARES)
 
     .btn-wsp:hover {
         transform: scale(1.1);
+    }
+
+    /* FOOTER Y REDES */
+    footer {
+        background-color: var(--color-primario); /* Fondo oscuro */
+        color: var(--color-blanco);
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem; /* Separarlo de los productos */
+    }
+
+    .redes-sociales {
+        margin-bottom: 1rem;
+        display: flex; /* Para ponerlos uno al lado del otro */
+        justify-content: center;
+        gap: 20px; /* Espacio entre íconos */
+    }
+
+    .redes-sociales a {
+        color: var(--color-blanco);
+        font-size: 2rem; /* Tamaño grande */
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    .redes-sociales a:hover {
+        color: var(--color-acento); /* Se pone dorado al pasar el mouse */
+        transform: translateY(-5px); /* Saltito */
     }

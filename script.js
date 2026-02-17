@@ -1,7 +1,7 @@
 
 /* 1. CONFIGURACIÓN DEL NEGOCIO (¡El único lugar que vas a tocar!) */
 const config = {
-    // Datos Generales
+    fondo: "img/fondoMYF.jpeg",
     negocio: "Mate y Folclore",
     slogan: "Personalizá tus momentos con láser",
     whatsapp: "5491100000000", // TU NÚMERO REAL (sin + ni espacios)
@@ -38,6 +38,13 @@ const config = {
 /* 2. LÓGICA DEL SISTEMA (No hace falta tocar esto seguido) */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Definís la ruta de la imagen (puede venir de una variable o base de datos)
+    const hero = document.getElementById('hero');
+    const opacidad = 0.6; // Para que el texto se lea bien sobre la foto
+
+    // Aplicamos el estilo
+    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,${opacidad}), rgba(0,0,0,${opacidad})), url("${config.fondo}")`;
     
     // A. Cargar datos del Negocio
     document.getElementById('nombre-negocio').innerText = config.negocio;
