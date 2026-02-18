@@ -83,11 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-    // 2. Chequeamos si existen (Esto es para evitar errores)
+// 2. Chequeamos si existen (Esto es para evitar errores)
     if (menuToggle && navMenu) {
         console.log("✅ Botón Hamburguesa Encontrado");
 
-        // 3. Escuchamos el Clic
+// 3. Escuchamos el Clic
         menuToggle.addEventListener('click', () => {
             console.log("🖱️ Hiciste Clic en el menú!");
             
@@ -100,4 +100,27 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log("❌ ERROR: No encuentro el botón con id 'mobile-menu'");
     }
+
+// E. ANIMACIONES AL SCROLLEAR
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Dejar de observar una vez que apareció
+            }
+        });
+    }, observerOptions);
+
+    // Seleccionamos qué queremos animar (Títulos, secciones, cards)
+    const elementosAnimados = document.querySelectorAll('section, h2, .producto-card');
+    elementosAnimados.forEach(el => {
+        el.classList.add('fade-in'); // Agregamos la clase base
+        observer.observe(el);
+    });
 });
