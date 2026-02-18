@@ -107,6 +107,19 @@
         max-width: 600px;
     }
 
+    .boton-hero {
+        border: 1px solid var(--color-secundario);
+        border-radius: var(--radio-borde);
+        padding: 10px 10px;
+        color: var(--color-blanco);
+        transition: transform 0.3s ease;
+    }
+
+    .boton-hero:hover {
+        color: var(--color-secundario);
+        transform: scale(1.05);
+    }
+
 /* 6. BOTONES */
     .boton-compra {
         background-color: var(--color-secundario);
