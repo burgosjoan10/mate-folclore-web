@@ -7,6 +7,8 @@ const config = {
     whatsapp: "5491100000000", // TU NÚMERO REAL (sin + ni espacios)
     
     // Colores (Esto sobrescribe al CSS si quisieras, pero por ahora lo dejamos simple)
+
+    urlScriptGoogle: "https://script.google.com/macros/s/AKfycbyEeEvN45Vq5dFRtx-vRLVgDaQzggABQhEZgMVH3jGaMqqhvjMMK-PqBwQ6iIJfAda2/exec",
     
     // CATÁLOGO DE PRODUCTOS (Tu Vidriera)
     productos: [
@@ -15,21 +17,24 @@ const config = {
             titulo: "Mate 'Maravilla' Martinez",
             precio: 20000,
             foto: "img/mateMaravilla.jpeg", // Asegurate que la foto exista
-            descripcion: "Virola de alpaca y cuero crudo."
+            descripcion: "Virola de alpaca y cuero crudo.",
+            categoria: "mates"
         },
         {
             id: 2,
             titulo: "Vaso Fernetero",
             precio: 6000,
-            foto: "img/vasosFerneteros.jpeg",
-            descripcion: "Acero inoxidable, grabado láser."
+            foto: "img/vasosFernet.jpeg",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
         },
         {
             id: 3,
             titulo: "Mate camionero",
             precio: 22000,
-            foto: "img/mateMarron.jpeg",
-            descripcion: "Virola de alpaca, con grabado laser."
+            foto: "img/mateMarronCamion.jpeg",
+            descripcion: "Virola de alpaca, con grabado laser.",
+            categoria: "mates"
         },
         // ¡Acá podés copiar y pegar para agregar más!
     ]
@@ -63,11 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${producto.titulo}</h3>
                     <p>${producto.descripcion}</p>
                     <span class="precio">$${producto.precio}</span>
-                    
-                    <a href="https://wa.me/${config.whatsapp}?text=Hola! Me interesa el ${producto.titulo} de $${producto.precio}" 
-                       target="_blank" 
-                       class="boton-compra">
-                       Lo Quiero
+
+                    <a href="https://wa.me/${config.whatsapp}?text=Hola! Me interesa el ${producto.titulo}" 
+                        target="_blank" 
+                        class="boton-compra"
+                        onclick="registrarVenta('${producto.titulo}', '${producto.precio}')">
+                        Lo Quiero
                     </a>
                 </div>
             </article>
@@ -124,3 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
+
+/* F. FUNCIÓN PARA MANDAR DATOS A GOOGLE SHEETS */
+function registrarVenta(producto, precio) {
+    // Creamos el paquete de datos
+    const datos = {
+        producto: producto,
+        precio: precio
+    };
+
+    // Enviamos el paquete al script de Google
+    fetch(config.urlScriptGoogle, {
+        method: 'POST',
+        mode: 'no-cors', // Importante para evitar errores de seguridad del navegador
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(() => {
+        console.log("Venta enviada a Google Sheets!");
+    }).catch(error => {
+        console.error("Error al registrar venta:", error);
+    });
+    
+    // NOTA: El enlace de WhatsApp se abrirá igual porque está en el href
+}
