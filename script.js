@@ -56,44 +56,72 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('slogan-negocio').innerText = config.slogan;
     document.title = config.negocio; // Cambia la pestaña del navegador
 
-    // B. Cargar Productos (El Bucle Mágico)
+    // ==========================================
+    // B. Cargar Productos y Filtros (NUEVO DÍA 9)
+    // ==========================================
     const contenedor = document.getElementById('contenedor-productos');
 
-    config.productos.forEach(producto => {
-        // Creamos el HTML de cada tarjeta usando "Template String" (las comillas torcidas ``)
-        const tarjetaHTML = `
-            <article class="producto-card">
-                <img src="${producto.foto}" alt="${producto.titulo}">
-                <div class="info-producto">
-                    <h3>${producto.titulo}</h3>
-                    <p>${producto.descripcion}</p>
-                    <span class="precio">$${producto.precio}</span>
+    // Esta función dibuja los productos según la categoría
+    window.mostrarProductos = function(categoriaSeleccionada) {
+        contenedor.innerHTML = ""; // Limpiamos la pantalla primero
 
-                    <a href="https://wa.me/${config.whatsapp}?text=Hola! Me interesa el ${producto.titulo}" 
-                        target="_blank" 
-                        class="boton-compra"
-                        onclick="registrarVenta('${producto.titulo}', '${producto.precio}')">
-                        Lo Quiero
-                    </a>
-                </div>
-            </article>
-        `;
+        // Filtramos la lista de productos
+        let productosFiltrados;
+        if (categoriaSeleccionada === 'todos') {
+            productosFiltrados = config.productos; 
+        } else {
+            productosFiltrados = config.productos.filter(producto => producto.categoria === categoriaSeleccionada);
+        }
 
-        // Inyectamos la tarjeta en el contenedor
-        contenedor.innerHTML += tarjetaHTML;
-    });
+        // Dibujamos las tarjetas filtradas
+        productosFiltrados.forEach(producto => {
+            // NOTA: Le agregamos 'fade-in visible' a la tarjeta para que aparezcan de una al filtrar
+            const tarjetaHTML = `
+                <article class="producto-card fade-in visible">
+                    <img src="${producto.foto}" alt="${producto.titulo}">
+                    <div class="info-producto">
+                        <h3>${producto.titulo}</h3>
+                        <p>${producto.descripcion}</p>
+                        <span class="precio">$${producto.precio}</span>
 
-    /* --- PEGAR ESTO ADENTRO DEL addEventListener('DOMContentLoaded', ...) --- */
+                        <a href="https://wa.me/${config.whatsapp}?text=Hola! Me interesa el ${producto.titulo}" 
+                            target="_blank" 
+                            class="boton-compra"
+                            onclick="registrarVenta('${producto.titulo}', '${producto.precio}')">
+                            Lo Quiero
+                        </a>
+                    </div>
+                </article>
+            `;
+            contenedor.innerHTML += tarjetaHTML;
+        });
+    };
 
-// 1. Buscamos el botón y el menú en el HTML
+    // Esta función se activa al tocar los botones de filtro
+    window.filtrarProductos = function(categoria, botonTocado) {
+        mostrarProductos(categoria); // Llama a la función de arriba
+        
+        // Le sacamos la clase 'activo' a todos los botones
+        document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('activo'));
+        // Y se la ponemos solo al que acabás de tocar
+        botonTocado.classList.add('activo'); 
+    };
+
+    // Al cargar la página por primera vez, mostramos 'todos'
+    mostrarProductos('todos');
+    // ==========================================
+
+
+    // C. LÓGICA DEL MENÚ HAMBURGUESA
+    // 1. Buscamos el botón y el menú en el HTML
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-// 2. Chequeamos si existen (Esto es para evitar errores)
+    // 2. Chequeamos si existen (Esto es para evitar errores)
     if (menuToggle && navMenu) {
         console.log("✅ Botón Hamburguesa Encontrado");
 
-// 3. Escuchamos el Clic
+        // 3. Escuchamos el Clic
         menuToggle.addEventListener('click', () => {
             console.log("🖱️ Hiciste Clic en el menú!");
             
@@ -107,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("❌ ERROR: No encuentro el botón con id 'mobile-menu'");
     }
 
-// E. ANIMACIONES AL SCROLLEAR
+    // D. ANIMACIONES AL SCROLLEAR
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -123,8 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Seleccionamos qué queremos animar (Títulos, secciones, cards)
-    const elementosAnimados = document.querySelectorAll('section, h2, .producto-card');
+    // Seleccionamos qué queremos animar. 
+    // (Le saqué .producto-card porque ahora se crean dinámicamente, animamos solo las secciones y títulos)
+    const elementosAnimados = document.querySelectorAll('section, h2');
     elementosAnimados.forEach(el => {
         el.classList.add('fade-in'); // Agregamos la clase base
         observer.observe(el);

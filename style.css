@@ -389,3 +389,33 @@ DISEÑO RESPONSIVE (PARA CELULARES)
         opacity: 1;
         transform: translateY(0);
     }
+
+/* --- FILTROS DE CATEGORÍA --- */
+    .filtros-categoria {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap; /* Por si en el celu no entran, se van para abajo */
+    }
+
+    .btn-filtro {
+        background-color: transparent;
+        color: var(--color-primario);
+        border: 2px solid var(--color-primario);
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-filtro:hover {
+        background-color: rgba(0,0,0,0.05);
+    }
+
+    /* El estilo para cuando el botón está seleccionado */
+    .btn-filtro.activo {
+        background-color: var(--color-primario);
+        color: var(--color-blanco);
+    }
