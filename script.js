@@ -1,7 +1,7 @@
 
 /* 1. CONFIGURACIÓN DEL NEGOCIO (¡El único lugar que vas a tocar!) */
 const config = {
-    fondo: "img/fondoMYF.jpeg",
+    fondo: "img/fondosIconos/fondoMYF.jpeg",
     negocio: "Mate y Folclore",
     slogan: "Personalizá tus momentos con láser",
     whatsapp: "5491100000000", // TU NÚMERO REAL (sin + ni espacios)
@@ -16,23 +16,79 @@ const config = {
             id: 1,
             titulo: "Mate 'Maravilla' Martinez",
             precio: 20000,
-            foto: "img/mateMaravilla.jpeg", // Asegurate que la foto exista
+            foto: "img/mates/mateMaravilla.jpeg", // Asegurate que la foto exista
             descripcion: "Virola de alpaca y cuero crudo.",
             categoria: "mates"
         },
         {
             id: 2,
-            titulo: "Vaso Fernetero",
+            titulo: "Vaso Fernetero 'Racing Club'",
             precio: 6000,
-            foto: "img/vasosFernet.jpeg",
+            foto: "img/vasos/racingVASO.png",
             descripcion: "Acero inoxidable, grabado láser.",
             categoria: "vasos"
         },
         {
             id: 3,
+            titulo: "Vaso Fernetero 'Boca Juniors'",
+            precio: 6000,
+            foto: "img/vasos/bocaVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 4,
+            titulo: "Vaso Fernetero 'River Plate'",
+            precio: 6000,
+            foto: "img/vasos/riverVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 5,
+            titulo: "Vaso Fernetero 'Independiente'",
+            precio: 6000,
+            foto: "img/vasos/independienteVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 6,
+            titulo: "Vaso Fernetero 'San Lorenzo'",
+            precio: 6000,
+            foto: "img/vasos/caslaVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 7,
+            titulo: "Vaso Fernetero 'Velez Sarsfield'",
+            precio: 6000,
+            foto: "img/vasos/velezVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 8,
+            titulo: "Vaso Fernetero 'Estudiantes de la plata'",
+            precio: 6000,
+            foto: "img/vasos/edlpVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 9,
+            titulo: "Vaso Fernetero 'Huracan'",
+            precio: 6000,
+            foto: "img/vasos/huracanVASO.png",
+            descripcion: "Acero inoxidable, grabado láser.",
+            categoria: "vasos"
+        },
+        {
+            id: 10,
             titulo: "Mate camionero",
             precio: 22000,
-            foto: "img/mateMarronCamion.jpeg",
+            foto: "img/mates/mateMarronCamion.jpeg",
             descripcion: "Virola de alpaca, con grabado laser.",
             categoria: "mates"
         },

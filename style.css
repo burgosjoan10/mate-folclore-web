@@ -18,6 +18,7 @@
         text-decoration: none; /* Chau subrayado de los links */
         color: inherit; /* Que herede el color del padre */
     }
+    
 
 /* 2. VARIABLES GLOBALES (TU PALETA) */
     :root {
